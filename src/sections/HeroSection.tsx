@@ -53,7 +53,7 @@ export default function HeroSection() {
       <FadeIn
         delay={0.6}
         y={30}
-        className="pointer-events-none absolute left-1/2 z-10 w-[280px] -translate-x-1/2 top-1/2 -translate-y-1/2 sm:top-auto sm:translate-y-0 sm:bottom-0 sm:w-[360px] md:w-[440px] lg:w-[520px]"
+        className="pointer-events-none absolute right-[4%] top-[35%] z-10 w-[180px] sm:top-[40%] sm:right-[6%] sm:w-[240px] md:top-[42%] md:right-[8%] md:w-[300px] lg:top-[44%] lg:right-[10%] lg:w-[360px]"
       >
         <NetworkGraph />
       </FadeIn>

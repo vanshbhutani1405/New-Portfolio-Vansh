@@ -15,16 +15,19 @@ interface CharacterProps {
 }
 
 function Character({ char, index, total, scrollYProgress }: CharacterProps) {
+  if (char === ' ') {
+    return <span className="inline"> </span>
+  }
+
   const start = index / total
   const end = Math.min((index + 1) / total, 1)
   const opacity = useTransform(scrollYProgress, [start, end], [0.2, 1])
-  const display = char === ' ' ? '\u00A0' : char
 
   return (
     <span className="relative inline">
-      <span className="invisible">{display}</span>
+      <span className="invisible">{char}</span>
       <motion.span className="absolute left-0 top-0" style={{ opacity }}>
-        {display}
+        {char}
       </motion.span>
     </span>
   )
