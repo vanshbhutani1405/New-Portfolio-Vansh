@@ -1,4 +1,178 @@
+import type { IconType } from 'react-icons'
+import {
+  SiLangchain,
+  SiLanggraph,
+  SiHuggingface,
+  SiTensorflow,
+  SiPytorch,
+  SiScikitlearn,
+  SiNumpy,
+  SiPandas,
+  SiFastapi,
+  SiFlask,
+  SiPostgresql,
+  SiSupabase,
+  SiDocker,
+  SiGit,
+  SiGithub,
+  SiRender,
+  SiVercel,
+  SiPython,
+  SiJavascript,
+  SiCplusplus,
+  SiCursor,
+  SiClaude,
+} from 'react-icons/si'
+import {
+  TbBrain,
+  TbNetwork,
+  TbTopologyStar3,
+  TbMessageChatbot,
+  TbRobot,
+  TbSparkles,
+  TbAffiliate,
+  TbUsersGroup,
+  TbDatabaseSearch,
+  TbListSearch,
+  TbChartDots3,
+  TbMessage2Code,
+  TbSitemap,
+  TbAdjustmentsHorizontal,
+  TbAdjustmentsAlt,
+  TbEye,
+  TbCategory,
+  TbTrendingUp,
+  TbChartLine,
+  TbFileText,
+  TbTool,
+  TbCpu2,
+  TbBrandOpenai,
+  TbChartHistogram,
+  TbStack2,
+  TbChartBar,
+  TbApi,
+  TbLock,
+  TbFileUpload,
+  TbClockHour4,
+  TbVectorTriangle,
+  TbDatabase,
+  TbBrandAzure,
+  TbTimeline,
+  TbCloudUpload,
+  TbGitBranch,
+  TbTestPipe,
+  TbBrowserCheck,
+  TbSpider,
+  TbArrowsShuffle,
+  TbServer,
+  TbBrandVscode,
+  TbBulb,
+  TbLayoutGrid,
+  TbTargetArrow,
+  TbCode,
+  TbCircleDot,
+} from 'react-icons/tb'
 import FadeIn from '../components/FadeIn'
+
+const SKILL_ICONS: Record<string, IconType> = {
+  // AI / Machine Learning
+  'Machine Learning': TbBrain,
+  'Deep Learning': TbNetwork,
+  'Artificial Neural Networks (ANN)': TbTopologyStar3,
+  'Natural Language Processing (NLP)': TbMessageChatbot,
+  'Large Language Models (LLMs)': TbRobot,
+  'Generative AI': TbSparkles,
+  'Agentic AI': TbAffiliate,
+  'Multi-Agent Systems': TbUsersGroup,
+  'Retrieval-Augmented Generation (RAG)': TbDatabaseSearch,
+  'Hybrid RAG': TbListSearch,
+  GraphRAG: TbChartDots3,
+  'Prompt Engineering': TbMessage2Code,
+  'AI Workflow Orchestration': TbSitemap,
+  'Model Fine-tuning': TbAdjustmentsHorizontal,
+  'Feature Engineering': TbAdjustmentsAlt,
+  'Explainable AI (SHAP)': TbEye,
+  Classification: TbCategory,
+  Regression: TbTrendingUp,
+  'Time Series Analysis': TbChartLine,
+  'Context Engineering': TbFileText,
+  'Harness Engineering': TbTool,
+
+  // Frameworks & Libraries
+  LangChain: SiLangchain,
+  LangGraph: SiLanggraph,
+  'Hugging Face Transformers': SiHuggingface,
+  'Hugging Face Embeddings': SiHuggingface,
+  'Groq SDK': TbCpu2,
+  'OpenAI API': TbBrandOpenai,
+  TensorFlow: SiTensorflow,
+  PyTorch: SiPytorch,
+  'Scikit-learn': SiScikitlearn,
+  XGBoost: TbChartHistogram,
+  CatBoost: TbStack2,
+  NumPy: SiNumpy,
+  Pandas: SiPandas,
+  Matplotlib: TbChartBar,
+
+  // Backend Development
+  FastAPI: SiFastapi,
+  Flask: SiFlask,
+  'REST APIs': TbApi,
+  'API Development': TbApi,
+  'Python Backend Development': SiPython,
+  Authentication: TbLock,
+  'File Upload Pipelines': TbFileUpload,
+  'Async Programming': TbClockHour4,
+
+  // Databases & Vector Stores
+  PostgreSQL: SiPostgresql,
+  Supabase: SiSupabase,
+  pgvector: TbVectorTriangle,
+  ChromaDB: TbDatabase,
+  SQL: TbDatabase,
+  Pinecone: TbVectorTriangle,
+
+  // Cloud, DevOps & Deployment
+  Docker: SiDocker,
+  Git: SiGit,
+  GitHub: SiGithub,
+  Render: SiRender,
+  Vercel: SiVercel,
+  Azure: TbBrandAzure,
+  LangSmith: TbTimeline,
+  'Model Deployment': TbCloudUpload,
+  'CI/CD Fundamentals': TbGitBranch,
+
+  // Automation & Developer Tools
+  Playwright: TbTestPipe,
+  'Browser Automation': TbBrowserCheck,
+  'Web Scraping': TbSpider,
+  'Data Pipelines': TbArrowsShuffle,
+  'MCP Servers': TbServer,
+  'VS Code': TbBrandVscode,
+  Cursor: SiCursor,
+  'Claude Code': SiClaude,
+
+  // Programming Languages
+  Python: SiPython,
+  JavaScript: SiJavascript,
+  'C++': SiCplusplus,
+
+  // Core Engineering Strengths
+  'Agentic AI Architecture': TbAffiliate,
+  'Multi-Agent Workflow Design': TbUsersGroup,
+  'LLM Application Development': TbRobot,
+  'Production AI Systems': TbServer,
+  'End-to-End Machine Learning': TbArrowsShuffle,
+  'Retrieval System Design': TbDatabaseSearch,
+  'AI Product Development': TbBulb,
+  'Full Stack AI Engineering': TbLayoutGrid,
+  'Scalable Backend Development': TbServer,
+  'Problem Solving': TbTargetArrow,
+  'Software Engineering': TbCode,
+}
+
+const DEFAULT_ICON = TbCircleDot
 
 const SKILL_GROUPS = [
   {
@@ -138,14 +312,18 @@ export default function SkillsSection() {
                 {group.title}
               </h3>
               <div className="flex flex-wrap gap-2 sm:gap-3">
-                {group.skills.map((skill) => (
-                  <span
-                    key={skill}
-                    className="rounded-full border border-[#D7E2EA]/25 px-3 py-1.5 text-xs font-medium text-[#D7E2EA]/80 transition-colors duration-200 ease-out hover:border-[#D7E2EA]/60 hover:text-[#D7E2EA] sm:px-4 sm:py-2 sm:text-sm"
-                  >
-                    {skill}
-                  </span>
-                ))}
+                {group.skills.map((skill) => {
+                  const Icon = SKILL_ICONS[skill] ?? DEFAULT_ICON
+                  return (
+                    <span
+                      key={skill}
+                      className="inline-flex items-center gap-1.5 rounded-full border border-[#D7E2EA]/25 px-3 py-1.5 text-xs font-medium text-[#D7E2EA]/80 transition-colors duration-200 ease-out hover:border-[#D7E2EA]/60 hover:text-[#D7E2EA] sm:px-4 sm:py-2 sm:text-sm"
+                    >
+                      <Icon size={14} className="shrink-0 sm:size-4" aria-hidden="true" />
+                      {skill}
+                    </span>
+                  )
+                })}
               </div>
             </div>
           </FadeIn>
