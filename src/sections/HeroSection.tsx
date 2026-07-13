@@ -1,6 +1,9 @@
+import { useReducedMotion } from 'framer-motion'
+import type { MouseEvent } from 'react'
 import FadeIn from '../components/FadeIn'
 import ContactButton from '../components/ContactButton'
-import Magnet from '../components/Magnet'
+import NetworkGraph from '../components/NetworkGraph'
+import { scrollToSection } from '../lib/scroll'
 
 const NAV_LINKS = [
   { label: 'About', href: '#about' },
@@ -10,10 +13,14 @@ const NAV_LINKS = [
   { label: 'Contact', href: '#contact' },
 ]
 
-const HERO_PORTRAIT =
-  'https://shrug-person-78902957.figma.site/_components/v2/d24c01ad3a56fc65e942a1f501eb73db42d7cf9a/Rectangle_40443.81459862.png'
-
 export default function HeroSection() {
+  const shouldReduceMotion = !!useReducedMotion()
+
+  const handleNavClick = (e: MouseEvent<HTMLAnchorElement>, href: string) => {
+    e.preventDefault()
+    scrollToSection(href.slice(1), shouldReduceMotion)
+  }
+
   return (
     <section className="relative flex h-screen flex-col overflow-x-clip">
       <FadeIn delay={0} y={-20}>
@@ -22,6 +29,7 @@ export default function HeroSection() {
             <a
               key={link.label}
               href={link.href}
+              onClick={(e) => handleNavClick(e, link.href)}
               className="font-medium uppercase tracking-wider text-[#D7E2EA] transition-opacity duration-200 ease-out hover:opacity-70"
               style={{ fontSize: 'clamp(0.75rem, 1.1vw + 0.5rem, 1.4rem)' }}
             >
@@ -37,7 +45,7 @@ export default function HeroSection() {
             className="hero-heading mt-6 w-full whitespace-nowrap font-black uppercase leading-none tracking-tight sm:mt-4 md:-mt-5"
             style={{ fontSize: 'clamp(3.5rem, 4vw + 8rem, 17.5vw)' }}
           >
-            Hi, i{'\u2019'}m vansh
+            Hi, i{'’'}m vansh
           </h1>
         </FadeIn>
       </div>
@@ -45,20 +53,9 @@ export default function HeroSection() {
       <FadeIn
         delay={0.6}
         y={30}
-        className="absolute left-1/2 z-10 w-[280px] -translate-x-1/2 top-1/2 -translate-y-1/2 sm:top-auto sm:translate-y-0 sm:bottom-0 sm:w-[360px] md:w-[440px] lg:w-[520px]"
+        className="pointer-events-none absolute left-1/2 z-10 w-[280px] -translate-x-1/2 top-1/2 -translate-y-1/2 sm:top-auto sm:translate-y-0 sm:bottom-0 sm:w-[360px] md:w-[440px] lg:w-[520px]"
       >
-        <Magnet padding={150} strength={3}>
-          <img
-            src={HERO_PORTRAIT}
-            alt="Portrait illustration"
-            width={520}
-            height={650}
-            className="h-auto w-full"
-            loading="eager"
-            decoding="async"
-            fetchPriority="high"
-          />
-        </Magnet>
+        <NetworkGraph />
       </FadeIn>
 
       <div className="mt-auto flex items-end justify-between px-6 pb-7 sm:pb-8 md:px-10 md:pb-10">

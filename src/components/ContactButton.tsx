@@ -1,15 +1,23 @@
+import type { MouseEvent } from 'react'
+import { useReducedMotion } from 'framer-motion'
+import { scrollToSection } from '../lib/scroll'
+
 interface ContactButtonProps {
-  href?: string
   label?: string
 }
 
-export default function ContactButton({
-  href = 'mailto:vanshbhutani2005@gmail.com',
-  label = 'Contact Me',
-}: ContactButtonProps) {
+export default function ContactButton({ label = 'Contact Me' }: ContactButtonProps) {
+  const shouldReduceMotion = useReducedMotion()
+
+  const handleClick = (e: MouseEvent<HTMLAnchorElement>) => {
+    e.preventDefault()
+    scrollToSection('contact', !!shouldReduceMotion)
+  }
+
   return (
     <a
-      href={href}
+      href="#contact"
+      onClick={handleClick}
       className="inline-block rounded-full px-8 py-3 text-center text-xs font-medium uppercase tracking-widest text-white transition-transform duration-200 ease-out hover:scale-[1.03] active:scale-[0.98] sm:px-10 sm:py-3.5 sm:text-sm md:px-12 md:py-4 md:text-base"
       style={{
         background:
