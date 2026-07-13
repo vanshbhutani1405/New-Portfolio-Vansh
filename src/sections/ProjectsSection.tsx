@@ -1,17 +1,14 @@
 import { motion, useScroll, useTransform } from 'framer-motion'
 import { useRef, type CSSProperties } from 'react'
-import {
-  Activity,
-  FileSearch,
-  GitCompare,
-  Network,
-  Sprout,
-  TrendingDown,
-  GraduationCap,
-  type LucideIcon,
-} from 'lucide-react'
 import FadeIn from '../components/FadeIn'
 import LiveProjectButton from '../components/LiveProjectButton'
+import pranrakshakImg from '../assets/projects/pranrakshak.png'
+import togetherImg from '../assets/projects/together.png'
+import ragifyImg from '../assets/projects/ragify.png'
+import quoraImg from '../assets/projects/quora.png'
+import customerChurnImg from '../assets/projects/customer-churn.png'
+import studentPerformanceImg from '../assets/projects/student-performance.png'
+import farmcultureImg from '../assets/projects/farmculture.png'
 
 interface Project {
   number: string
@@ -21,7 +18,7 @@ interface Project {
   tech: string[]
   live?: string
   github: string
-  icon: LucideIcon
+  image: string
 }
 
 const PROJECTS: Project[] = [
@@ -34,7 +31,7 @@ const PROJECTS: Project[] = [
     tech: ['FastAPI', 'React', 'PostgreSQL', 'LangGraph', 'LangChain', 'Groq', 'Llama 3.3 70B', 'SHAP'],
     live: 'https://pranrakshak-ai.vercel.app/',
     github: 'https://github.com/vanshbhutani1405/PranRakshak-AI-MAIN',
-    icon: Activity,
+    image: pranrakshakImg,
   },
   {
     number: '02',
@@ -45,7 +42,7 @@ const PROJECTS: Project[] = [
     tech: ['LangGraph', 'FastAPI', 'Groq', 'React', 'Supabase', 'PostgreSQL', 'pgvector'],
     live: 'https://together-intelligence-toolkit.vercel.app/dashboard',
     github: 'https://github.com/vanshbhutani1405/Together-Intelligence-Toolkit',
-    icon: Network,
+    image: togetherImg,
   },
   {
     number: '03',
@@ -56,7 +53,7 @@ const PROJECTS: Project[] = [
     tech: ['LangChain', 'RAG', 'FastAPI', 'Vector Search'],
     live: 'https://ragify-vansh.vercel.app/',
     github: 'https://github.com/vanshbhutani1405/RAGify',
-    icon: FileSearch,
+    image: ragifyImg,
   },
   {
     number: '04',
@@ -67,7 +64,7 @@ const PROJECTS: Project[] = [
     tech: ['NLP', 'TF-IDF', 'Transformers', 'Scikit-learn'],
     live: 'https://quora-question-pairs-nlp.streamlit.app',
     github: 'https://github.com/vanshbhutani1405/Quora-Question-Pairs-NLP',
-    icon: GitCompare,
+    image: quoraImg,
   },
   {
     number: '05',
@@ -78,7 +75,7 @@ const PROJECTS: Project[] = [
     tech: ['TensorFlow', 'ANN', 'Streamlit'],
     live: 'https://customer-churn-ann-classifier-vansh.streamlit.app',
     github: 'https://github.com/vanshbhutani1405/Customer-Churn-ANN-Classifier-',
-    icon: TrendingDown,
+    image: customerChurnImg,
   },
   {
     number: '06',
@@ -89,7 +86,7 @@ const PROJECTS: Project[] = [
     tech: ['Python', 'Scikit-learn', 'End-to-End ML', 'Render'],
     live: 'https://vansh-end-to-end-ml.onrender.com',
     github: 'https://github.com/vanshbhutani1405/End-to-End-ML_Project',
-    icon: GraduationCap,
+    image: studentPerformanceImg,
   },
   {
     number: '07',
@@ -99,7 +96,7 @@ const PROJECTS: Project[] = [
       'AI-powered crop recommendation platform using machine learning and data analysis to help farmers choose the right crops.',
     tech: ['Machine Learning', 'Data Analysis', 'Python'],
     github: 'https://github.com/vanshbhutani1405/FarmCulture',
-    icon: Sprout,
+    image: farmcultureImg,
   },
 ]
 
@@ -120,7 +117,6 @@ function ProjectCard({
 
   const targetScale = 1 - (totalCards - 1 - index) * 0.03
   const scale = useTransform(scrollYProgress, [0, 1], [1, targetScale])
-  const Icon = project.icon
 
   return (
     <div
@@ -164,14 +160,18 @@ function ProjectCard({
 
         <div className="flex flex-1 flex-col gap-4 md:flex-row md:gap-6">
           <div
-            className="flex w-full shrink-0 items-center justify-center rounded-[40px] sm:rounded-[50px] md:w-[36%] md:rounded-[60px]"
-            style={{
-              height: 'clamp(160px, 20vw, 260px)',
-              background:
-                'radial-gradient(circle at 30% 30%, rgba(215, 226, 234, 0.14), rgba(12, 12, 12, 0.4))',
-            }}
+            className="w-full shrink-0 overflow-hidden rounded-[40px] sm:rounded-[50px] md:w-[36%] md:rounded-[60px]"
+            style={{ height: 'clamp(160px, 20vw, 260px)' }}
           >
-            <Icon size={72} strokeWidth={1.25} className="text-[#D7E2EA]" />
+            <img
+              src={project.image}
+              alt={`${project.name} screenshot`}
+              width={1366}
+              height={686}
+              loading="lazy"
+              decoding="async"
+              className="h-full w-full object-cover"
+            />
           </div>
 
           <div className="flex flex-1 flex-col gap-4">

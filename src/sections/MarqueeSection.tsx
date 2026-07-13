@@ -1,38 +1,36 @@
 import { useEffect, useRef, useState } from 'react'
+import pranrakshakImg from '../assets/projects/pranrakshak.png'
+import togetherImg from '../assets/projects/together.png'
+import ragifyImg from '../assets/projects/ragify.png'
+import quoraImg from '../assets/projects/quora.png'
+import customerChurnImg from '../assets/projects/customer-churn.png'
+import studentPerformanceImg from '../assets/projects/student-performance.png'
+import farmcultureImg from '../assets/projects/farmculture.png'
 
-const MARQUEE_IMAGES = [
-  'https://motionsites.ai/assets/hero-space-voyage-preview-eECLH3Yc.gif',
-  'https://motionsites.ai/assets/hero-codenest-preview-Cgppc2qV.gif',
-  'https://motionsites.ai/assets/hero-vex-ventures-preview-BczMFIiw.gif',
-  'https://motionsites.ai/assets/hero-stellar-ai-v2-preview-DjvxjG3C.gif',
-  'https://motionsites.ai/assets/hero-asme-preview-B_nGDnTP.gif',
-  'https://motionsites.ai/assets/hero-transform-data-preview-Cx5OU29N.gif',
-  'https://motionsites.ai/assets/hero-vitara-preview-Cjz2QYyU.gif',
-  'https://motionsites.ai/assets/hero-terra-preview-BFjrCr7T.gif',
-  'https://motionsites.ai/assets/hero-skyelite-preview-DHaZIgUv.gif',
-  'https://motionsites.ai/assets/hero-aethera-preview-DknSlcTa.gif',
-  'https://motionsites.ai/assets/hero-designpro-preview-D8c5_een.gif',
-  'https://motionsites.ai/assets/hero-stellar-ai-preview-D3HL6bw1.gif',
-  'https://motionsites.ai/assets/hero-xportfolio-preview-D4A8maiC.gif',
-  'https://motionsites.ai/assets/hero-orbit-web3-preview-BXt4OttD.gif',
-  'https://motionsites.ai/assets/hero-nexora-preview-cx5HmUgo.gif',
-  'https://motionsites.ai/assets/hero-evr-ventures-preview-DZxeVFEX.gif',
-  'https://motionsites.ai/assets/hero-planet-orbit-preview-DWAP8Z1P.gif',
-  'https://motionsites.ai/assets/hero-new-era-preview-CocuDUm9.gif',
-  'https://motionsites.ai/assets/hero-wealth-preview-B70idl_u.gif',
-  'https://motionsites.ai/assets/hero-luminex-preview-CxOP7ce6.gif',
-  'https://motionsites.ai/assets/hero-celestia-preview-0yO3jXO8.gif',
+interface MarqueeImage {
+  src: string
+  alt: string
+}
+
+const MARQUEE_IMAGES: MarqueeImage[] = [
+  { src: pranrakshakImg, alt: 'PranRakshak AI' },
+  { src: togetherImg, alt: 'Together Intelligence Toolkit' },
+  { src: ragifyImg, alt: 'RAGify' },
+  { src: quoraImg, alt: 'Quora Question Pair Semantic Similarity' },
+  { src: customerChurnImg, alt: 'Customer Churn ANN Classifier' },
+  { src: studentPerformanceImg, alt: 'Student Performance Prediction' },
+  { src: farmcultureImg, alt: 'FarmCulture' },
 ]
 
-const ROW_1 = MARQUEE_IMAGES.slice(0, 11)
-const ROW_2 = MARQUEE_IMAGES.slice(11)
+const ROW_1 = MARQUEE_IMAGES.slice(0, 4)
+const ROW_2 = MARQUEE_IMAGES.slice(4)
 
 function MarqueeRow({
   images,
   direction,
   offset,
 }: {
-  images: string[]
+  images: MarqueeImage[]
   direction: 'left' | 'right'
   offset: number
 }) {
@@ -48,11 +46,11 @@ function MarqueeRow({
         willChange: 'transform',
       }}
     >
-      {tripled.map((src, i) => (
+      {tripled.map((image, i) => (
         <img
-          key={`${src}-${i}`}
-          src={src}
-          alt=""
+          key={`${image.src}-${i}`}
+          src={image.src}
+          alt={image.alt}
           width={420}
           height={270}
           loading="lazy"
