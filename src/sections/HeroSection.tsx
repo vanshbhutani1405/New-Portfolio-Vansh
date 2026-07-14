@@ -1,8 +1,8 @@
 import { useReducedMotion } from 'framer-motion'
 import type { MouseEvent } from 'react'
 import FadeIn from '../components/FadeIn'
-import ContactButton from '../components/ContactButton'
 import NetworkGraph from '../components/NetworkGraph'
+import TechMarquee from '../components/TechMarquee'
 import { scrollToSection } from '../lib/scroll'
 
 const NAV_LINKS = [
@@ -42,13 +42,17 @@ export default function HeroSection() {
       <div className="overflow-hidden">
         <FadeIn delay={0.15} y={40}>
           <h1
-            className="hero-heading mt-6 w-full whitespace-nowrap font-black uppercase leading-none tracking-tight sm:mt-4 md:-mt-5"
+            className="hero-heading mt-4 w-full whitespace-nowrap font-black uppercase leading-none tracking-tight sm:mt-3 md:-mt-4 lg:-mt-6"
             style={{ fontSize: 'clamp(3.5rem, 4vw + 8rem, 17.5vw)' }}
           >
             Hi, i{'’'}m vansh
           </h1>
         </FadeIn>
       </div>
+
+      <FadeIn delay={0.3} y={10}>
+        <TechMarquee />
+      </FadeIn>
 
       <FadeIn
         delay={0.6}
@@ -66,10 +70,6 @@ export default function HeroSection() {
           >
             AI Engineer building production-ready agentic AI, LLM & RAG systems
           </p>
-        </FadeIn>
-
-        <FadeIn delay={0.5} y={20}>
-          <ContactButton />
         </FadeIn>
       </div>
     </section>
