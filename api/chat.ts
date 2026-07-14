@@ -14,12 +14,14 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
 
   const apiKey = process.env.GROQ_API_KEY
   if (!apiKey) {
+    console.error('[api/chat] GROQ_API_KEY is not set in the environment')
     res.status(500).json({ error: 'Server misconfigured' })
     return
   }
 
   const messages: ChatMessage[] = Array.isArray(req.body?.messages) ? req.body.messages : []
   if (messages.length === 0) {
+    console.error('[api/chat] Invalid request body — expected { messages: [...] }, got:', typeof req.body)
     res.status(400).json({ error: 'messages is required' })
     return
   }
@@ -43,6 +45,8 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
     })
 
     if (!upstream.ok) {
+      const errorBody = await upstream.text()
+      console.error(`[api/chat] Groq returned ${upstream.status} ${upstream.statusText}: ${errorBody}`)
       res.status(502).json({ error: 'Upstream error' })
       return
     }
@@ -51,12 +55,14 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
     const reply = data?.choices?.[0]?.message?.content?.trim()
 
     if (!reply) {
+      console.error('[api/chat] Groq responded 200 but no content found. Payload:', JSON.stringify(data))
       res.status(502).json({ error: 'No response from model' })
       return
     }
 
     res.status(200).json({ reply })
-  } catch {
+  } catch (err) {
+    console.error('[api/chat] Unexpected error while calling Groq:', err)
     res.status(500).json({ error: 'Something went wrong' })
   }
 }
