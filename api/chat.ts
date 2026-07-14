@@ -1,5 +1,5 @@
 import type { VercelRequest, VercelResponse } from '@vercel/node'
-import { SYSTEM_PROMPT } from './_systemPrompt'
+import { SYSTEM_PROMPT } from './_systemPrompt.js'
 
 interface ChatMessage {
   role: 'user' | 'assistant'
