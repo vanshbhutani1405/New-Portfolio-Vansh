@@ -7,13 +7,18 @@ export default {
         sans: ['Kanit', 'sans-serif'],
       },
       keyframes: {
-        marquee: {
-          '0%': { transform: 'translateX(0)' },
-          '100%': { transform: 'translateX(-50%)' },
+        float: {
+          '0%, 100%': { transform: 'translateY(0)' },
+          '50%': { transform: 'translateY(-3px)' },
+        },
+        blink: {
+          '0%, 50%': { opacity: '1' },
+          '50.01%, 100%': { opacity: '0' },
         },
       },
       animation: {
-        marquee: 'marquee 28s linear infinite',
+        float: 'float 3s ease-in-out infinite',
+        blink: 'blink 1s step-end infinite',
       },
     },
   },

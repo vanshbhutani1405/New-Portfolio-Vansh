@@ -2,7 +2,7 @@ import { useReducedMotion } from 'framer-motion'
 import type { MouseEvent } from 'react'
 import FadeIn from '../components/FadeIn'
 import NetworkGraph from '../components/NetworkGraph'
-import TechMarquee from '../components/TechMarquee'
+import AITerminal from '../components/AITerminal'
 import { scrollToSection } from '../lib/scroll'
 
 const NAV_LINKS = [
@@ -52,10 +52,6 @@ export default function HeroSection() {
         </div>
       </div>
 
-      <FadeIn delay={0.3} y={10}>
-        <TechMarquee />
-      </FadeIn>
-
       <FadeIn
         delay={0.6}
         y={30}
@@ -63,6 +59,12 @@ export default function HeroSection() {
       >
         <NetworkGraph />
       </FadeIn>
+
+      <div className="pointer-events-none absolute inset-x-0 top-[calc(50%+140px)] z-0 flex -translate-y-1/2 justify-center px-6 md:justify-start md:pl-[34%] lg:pl-[36%]">
+        <FadeIn delay={0.3} y={10} className="pointer-events-auto w-[240px] sm:w-[280px] md:w-[300px]">
+          <AITerminal />
+        </FadeIn>
+      </div>
 
       <div className="flex items-end justify-between px-6 pb-7 sm:pb-8 md:px-10 md:pb-10">
         <FadeIn delay={0.35} y={20}>
