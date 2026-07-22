@@ -5,6 +5,8 @@ import quoraImg from '../assets/projects/quora.png'
 import customerChurnImg from '../assets/projects/customer-churn.png'
 import studentPerformanceImg from '../assets/projects/student-performance.png'
 import farmcultureImg from '../assets/projects/farmculture.png'
+import pragyaImg from '../assets/projects/pragya.png'
+
 
 export interface Project {
   number: string
@@ -19,7 +21,28 @@ export interface Project {
 
 export const PROJECTS: Project[] = [
   {
-    number: '01',
+  number: '01',
+  category: 'Enterprise AI',
+  name: 'Pragya AI',
+  description:
+    'Enterprise AI platform for industrial knowledge intelligence powered by a hybrid GraphRAG architecture. Combines Neo4j knowledge graphs, vector search, OCR, and LangGraph-based agentic workflows to deliver grounded, citation-backed reasoning across SOPs, safety manuals, regulations, maintenance manuals, and compliance documents.',
+  tech: [
+    'FastAPI',
+    'React',
+    'TypeScript',
+    'Neo4j',
+    'Supabase pgvector',
+    'LangGraph',
+    'Groq',
+    'Llama 3.3 70B'
+  ],
+  live: '',
+  github: 'https://github.com/vanshbhutani1405/PRAGYA-AI',
+  demo: 'https://youtu.be/-P0H1Lew7Vg',
+  image: pragyaImg,
+}
+  {
+    number: '02',
     category: 'Healthcare AI',
     name: 'PranRakshak AI',
     description:
@@ -30,7 +53,7 @@ export const PROJECTS: Project[] = [
     image: pranrakshakImg,
   },
   {
-    number: '02',
+    number: '03',
     category: 'Multi-Agent Systems',
     name: 'Together Intelligence Toolkit',
     description:
@@ -41,7 +64,7 @@ export const PROJECTS: Project[] = [
     image: togetherImg,
   },
   {
-    number: '03',
+    number: '04',
     category: 'Generative AI · RAG',
     name: 'RAGify',
     description:
@@ -74,7 +97,7 @@ export const PROJECTS: Project[] = [
     image: customerChurnImg,
   },
   {
-    number: '06',
+    number: '07',
     category: 'Machine Learning',
     name: 'Student Performance Prediction',
     description:
@@ -85,7 +108,7 @@ export const PROJECTS: Project[] = [
     image: studentPerformanceImg,
   },
   {
-    number: '07',
+    number: '08',
     category: 'AgriTech · ML',
     name: 'FarmCulture',
     description:
