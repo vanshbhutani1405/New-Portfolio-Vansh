@@ -39,7 +39,7 @@ export const PROJECTS: Project[] = [
   live: 'https://youtu.be/-P0H1Lew7Vg',
   github: 'https://github.com/vanshbhutani1405/PRAGYA-AI',
   image: pragyaImg,
-}
+},
   {
     number: '02',
     category: 'Healthcare AI',
