@@ -6,6 +6,7 @@ import quoraImg from '../assets/projects/quora.png'
 import customerChurnImg from '../assets/projects/customer-churn.png'
 import studentPerformanceImg from '../assets/projects/student-performance.png'
 import farmcultureImg from '../assets/projects/farmculture.png'
+import pragyaImg from '../assets/projects/pragya.png'
 
 interface MarqueeImage {
   src: string
@@ -13,6 +14,7 @@ interface MarqueeImage {
 }
 
 const MARQUEE_IMAGES: MarqueeImage[] = [
+  { src: pragyaImg, alt: 'Pragya AI' },
   { src: pranrakshakImg, alt: 'PranRakshak AI' },
   { src: togetherImg, alt: 'Together Intelligence Toolkit' },
   { src: ragifyImg, alt: 'RAGify' },
